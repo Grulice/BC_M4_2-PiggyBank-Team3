@@ -1,7 +1,7 @@
 module.exports = {
   mode: "development",
   entry: {
-    app: "./script.js"
+    app: "./src/index.js"
   },
   output: {
     filename: "./[name].js",
@@ -21,8 +21,6 @@ module.exports = {
   },
   watch: true,
   watchOptions: {
-    // aggregateTimeout: 1000,
-    // poll: 20000,
     ignored: /node_modules/,
   },
 };
