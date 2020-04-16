@@ -1,43 +1,45 @@
+const targetName = document.querySelector("#item-name");
+const needToReach = document.querySelector("#final-amount");
+const term = document.querySelector("#time");
+const startAmount = document.querySelector("#deposit");
+
+let pigWait = document.querySelector(".pig-wait");
+let offer = document.querySelector(".offer");
+let findOffer = document.querySelector(".calc-div button");
+let closePopUp = document.querySelector(".close span");
+
+findOffer.addEventListener("click", findOfferButtonHandler);
+closePopUp.addEventListener("click", closeWindow);
 
 function animateCSS(element, animationName, callback) {
-    const node = document.querySelector(element)
-    node.classList.add('animated', animationName);
+  const node = document.querySelector(element);
+  node.classList.add("animated", animationName);
+  node.classList.add("faster", animationName);
 
-    function handleAnimationEnd() {
-        node.classList.remove('animated', animationName)
-        node.removeEventListener('animationend', handleAnimationEnd)
+  function handleAnimationEnd() {
+    node.classList.remove("animated", animationName);
+    node.removeEventListener("animationend", handleAnimationEnd);
 
-        if (typeof callback === 'function') callback()
-    }
+    if (typeof callback === "function") callback();
+  }
 
-    node.addEventListener('animationend', handleAnimationEnd)
+  node.addEventListener("animationend", handleAnimationEnd);
 }
 
-let findOffer = document.querySelector('.calc-div button');
-let closePopUp = document.querySelector('.close span')
-
-const targetName = document.querySelector('#item-name').value;
-const needToReach = document.querySelector('#final-amount').value;
-const term = document.querySelector('#time').value;
-const startAmount = document.querySelector('#deposit').value;
-
-findOffer.addEventListener('click', findOfferButtonHandler)
-closePopUp.addEventListener('click', closeWindow);
-
 function findOfferButtonHandler() {
-    let pigWait = document.querySelector('.pig-wait');
-    let offer  = document.querySelector('.offer');
+  if (startAmount.value <= 0) {
+    animateCSS(".div-label-deposit", "shake");
+  }
 
-    if(startAmount.value < 0) {
-        animateCSS('#deposit', 'shake');
-    }
-    pigWait.style.display = 'none';
-    offer.style.display = 'flex';
+  if (term.value <= 0) {
+    animateCSS(".div-label-time", "shake");
+  }
+  pigWait.style.display = "none";
+  offer.style.display = "flex";
 }
 
 function closeWindow() {
-    document.querySelector('.pop-up').style.display = 'none';
-    pigWait.style.display = 'block';
-    offer.style.display = 'none';
-
+  document.querySelector(".pop-up").classList.add("hidden");
+  pigWait.style.display = "block";
+  offer.style.display = "none";
 }

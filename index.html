@@ -11,7 +11,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="pigWait.css" />
-    <script src="dynamic.js" defer></script>
+    <script src="dist/main.js" defer></script>
     <title>Сайт Копилка</title>
   </head>
   <body>
@@ -29,7 +29,7 @@
       </button>
       <main class="plan-container">
         <!-- Here will be items added by JavaScript-->
-        <div class="pop-up">
+        <div class="pop-up hidden">
           <button type="button" class="close" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -39,19 +39,19 @@
               <input type="text" class="input-field" id="item-name" />
             </div>
             <div class="single">
-              <div>Депозит</div>
-              <input type="number" class="input-field" id="deposit" />
+              <div class="div-label-deposit">Депозит</div>
+              <input type="number" class="input-field" id="deposit" min="1000" placeholder="min. 1000 RUB"/>
             </div>
             <div class="single">
-              <div>FV</div>
-              <input type="number" class="input-field" id="final-amount" />
+              <div>Целевая сумма</div>
+              <input type="number" class="input-field" id="final-amount" min="1001" placeholder="min. 1001 RUB" />
             </div>
             <div class="single">
-              <div>Time</div>
-              <input type="number" class="input-field" id="time" />
+              <div class="div-label-time">Срок вклада</div>
+              <input type="number" class="input-field" id="time" min="1" placeholder="Месяцы"/>
             </div>
             <div class="calc-div">
-              <button class="btn btn-primary" type="submit">Рассчитать</button>
+              <button id="calc-option" class="btn btn-primary" type="submit">Рассчитать</button>
             </div>
           </div>
           <div class="pig-wait">
@@ -238,15 +238,14 @@
           </div>
           <div class="offer">
             <ul class="list-group">
-              <li class="list-group-item active">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
+              <li id="deposit-name-caption" class="list-group-item active">deposit-name-caption</li>
+              <li id="percent-caption" class="list-group-item">Dapibus ac facilisis in</li>
+              <li id="monthly-deposit-caption" class="list-group-item">Morbi leo risus</li>
+
             </ul>
             <div class="submit-or-cancel">
-              <button class="btn btn-primary" type="submit">Подтвердить</button>
-              <button class="btn btn-primary" type="submit">Отклонить</button>
+              <button id="button-confirm" class="btn btn-primary" type="submit">Подтвердить</button>
+              <button id="button-cancel" class="btn btn-primary" type="submit">Отклонить</button>
             </div>
           </div>
         </div>
@@ -361,6 +360,5 @@
       <!-- Copyright -->
     </footer>
     <!-- Footer -->
-    <script src="scriptAnime.js"></script>
   </body>
 </html>
