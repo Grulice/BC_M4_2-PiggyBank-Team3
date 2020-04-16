@@ -1,8 +1,4 @@
-let fetcher = require("./fetcher");
-let calculator = require("./calculator")
-
-calculate.getMonthlyDeposit();
-
+const fetcher = require("./fetcher");
 
 //Кнопка создания цели
 const createButton = document.querySelector('');
@@ -15,3 +11,11 @@ const targetName = document.querySelector('').value;
 const needToReach = document.querySelector('').value;
 const term = document.querySelector('').value;
 const startAmount = document.querySelector('').value;
+
+
+// FETCHER DEMO
+const goBtn = document.getElementById("goFetch");
+
+goBtn.addEventListener("click", () => {
+  fetcher.getDeposits().then((result) => console.log(result));
+});

@@ -1,8 +1,6 @@
 module.exports = {
   mode: "development",
-  entry: {
-    app: "/src/index.js"
-  },
+  entry: "./src/index.js",
   output: {
     filename: "./[name].js",
   },
