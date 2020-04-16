@@ -8,20 +8,30 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="pigWait.css">
+  <script src="dynamic.js" defer></script>
   <title>Сайт Копилка</title>
 </head>
-
 <body>
   <header class="header-of-page">
-    <img src="./images/PIGGY.jpg" class="logo" alt="piggy-logo">
-    <div class="sections-of-header">My plans</div>
-    <div class="sections-of-header">About us</div>
-    <div class="sections-of-header">Contacts</div>
+    <img src="./images/pig.png" class="logo" alt="piggy-logo">
+    <div class="sections-block">
+      <div class="sections-of-header">My plans</div>
+      <div class="sections-of-header">About us</div>
+      <div class="sections-of-header">Contacts</div>
+    </div>
   </header>
   <main class='plan-container'>
-    <div class="plan">
-      <div class="edit mini-button" id="edit"></div>
-      <div class="delete mini-button" id="delete"></div>
+    <!-- Here will be items added by JavaScript-->
+    <div class="pop-up hidden">
+      <label for="item-name">Item</label>
+      <input type="text" class="input-field" id="item-name">
+      <label for="deposit">Deposit</label>
+      <input type="number" class="input-field" id="deposit">
+      <label for="final-amount">FV</label>
+      <input type="number" class="input-field" id="final-amount">
+      <label for="time">Time</label>
+      <input type="number" class="input-field" id="time">
+      <div class="delete mini-button" id="delete">X</div>
     </div>
     <div class="pop-up">
       <button type="button" class="close" aria-label="Close">
@@ -163,10 +173,14 @@
 
           <!-- Content -->
           <h5 class="font-weight-bold text-uppercase mb-4">Footer Content</h5>
-          <p>Here you can use rows and columns to organize your footer content.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit amet numquam iure provident voluptate
-            esse
-            quasi, veritatis totam voluptas nostrum.</p>
+          <p>PASHA CODING BOOTCAMP</p>
+          <p>Created by TEAM 3:</p>
+          <p>Ahmad Shahbalayev</p>
+          <p>Anar Ismaylov</p>
+          <p>Eldar Aliyev</p>
+          <p>Javid Bunyadzada</p>
+          <p>Mahammad Zeynalov</p>
+          <p>Sabina Huseynova</p>
 
         </div>
         <!-- Grid column -->
@@ -216,19 +230,19 @@
           <ul class="list-unstyled">
             <li>
               <p>
-                <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                <i class="fas fa-home mr-3"></i> Baku, AZ 1119, Azerbaijan</p>
             </li>
             <li>
               <p>
-                <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                <i class="fas fa-envelope mr-3"></i> team3@piggybank.az</p>
             </li>
             <li>
               <p>
-                <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                <i class="fas fa-phone mr-3"></i> + 994 55 555 55 55</p>
             </li>
             <li>
               <p>
-                <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                <i class="fas fa-print mr-3"></i> + 994 77 777 77 77</p>
             </li>
           </ul>
 
@@ -242,23 +256,8 @@
 
           <!-- Social buttons -->
           <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
-
-          <!-- Facebook -->
-          <a type="button" class="btn-floating btn-fb">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <!-- Twitter -->
-          <a type="button" class="btn-floating btn-tw">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <!-- Google +-->
-          <a type="button" class="btn-floating btn-gplus">
-            <i class="fab fa-google-plus-g"></i>
-          </a>
-          <!-- Dribbble -->
-          <a type="button" class="btn-floating btn-dribbble">
-            <i class="fab fa-dribbble"></i>
-          </a>
+          <p><a href="https://www.instagram.com/coding_bootcamp/">Instagram</a></p>
+          <p><a href="https://www.facebook.com/PASHACodingbootcamp/">Facebook</a></p>
 
         </div>
         <!-- Grid column -->
@@ -271,7 +270,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+      <a href="#"> Team 3</a>
     </div>
     <!-- Copyright -->
 

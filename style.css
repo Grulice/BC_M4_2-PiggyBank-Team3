@@ -10,26 +10,32 @@ body {
 
 .header-of-page {
     width: 100vw;
-    background-color: blueviolet;
+    background-color: #017D7C;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .logo {
     width: 90px;
-    margin-right: 100px;
+    margin-left: 105px;
+}
+
+.sections-block {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
 }
 
 .sections-of-header {
+    color: #FABF01;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10%;
-    color: white;
+    width: 33%;
 }
 
 .sections-of-header:hover {
-    background-color: violet;
+    background-color: #0090A4;
     cursor: pointer;
 }
 
@@ -37,16 +43,19 @@ body {
     width: 70%;
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     margin: 0 auto;
-    min-height: 300px;
-
+    min-height: 302px;
+    flex-direction: row;
+    border: 1px solid #FABF01;
+    border-radius: 10px;
+    margin-top: 30px;
 }
 
 .plan {
-    /* display: none; */
     border-radius: 10px;
     margin: 10px;
-    width: 30%;
+    width: 31.4%;
     min-width: 300px;
     min-height: 280px;
     height: 95%;
@@ -59,20 +68,52 @@ body {
     box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.41);
 }
 
-/* .mini-button {
+.content-main-focus {
+    margin-top: 50px;
+    font-size: 35px;
+    text-align: center;
+}
+
+.content-description {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+
+.content-left-description {
+    width: 50%;
+    line-height: 15px;
+    margin-top: 10px;
+}
+
+.content-right-description {
+    width: 50%;
+    line-height: 15px;
+    margin-top: 10px;
+}
+
+.mini-button {
     border-radius: 50%;
     width: 30px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: blueviolet;
+    background: #017D7C;
+    color: white;
+}
+
+.mini-button:hover {
+    cursor: pointer;
 }
 
 .edit {
     position: absolute;
     top: 5px;
     right: 45px;
+    background-image: url(./images/edit.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .delete {
@@ -89,12 +130,16 @@ body {
     left: 100px;
     top: 120px;
 
-    border: 1px solid blueviolet;
+    border: 1px solid #FABF01;
     border-radius: 50%;
     width: 100px;
     height: 100px;
 
-    background: blueviolet;
+    background: #FABF01;
+}
+
+#add {
+    outline: none;
 }
 
 .plus {
@@ -103,7 +148,7 @@ body {
 }
 
 hr {
-    background: blueviolet;
+    background: #588da8;
 }
 
 .seperator {
