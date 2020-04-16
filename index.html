@@ -1,26 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="pigWait.css" />
-    <script src="dynamic.js" defer></script>
-    <title>Сайт Копилка</title>
-  </head>
-  <body>
-    <header class="header-of-page">
-      <img src="./images/pig.png" class="logo" alt="piggy-logo" />
-      <div class="sections-block">
-        <div class="sections-of-header">My plans</div>
-        <div class="sections-of-header">About us</div>
-        <div class="sections-of-header">Contacts</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pigWait.css">
+  <link rel="stylesheet" href="animate.css">
+  <script src="dynamic.js" defer></script>
+  <title>Сайт Копилка</title>
+</head>
+<body>
+  <header class="header-of-page">
+    <img src="./images/pig.png" class="logo" alt="piggy-logo">
+    <div class="sections-block">
+      <div class="sections-of-header">My plans</div>
+      <div class="sections-of-header">About us</div>
+      <div class="sections-of-header">Contacts</div>
+    </div>
+  </header>
+  <main class='plan-container'>
+    <!-- Here will be items added by JavaScript-->
+    <div class="pop-up">
+      <button type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class='input-form'>
+        <div class='single'>
+          <div>На что будем копить?</div>
+          <input type="text" class="input-field" id="item-name">
+        </div>
+        <div class='single'>
+          <div class='div-label-deposit'>Депозит</div>
+          <input type="number" class="input-field" id="deposit">
+        </div>
+        <div class='single'>
+          <div>FV</div>
+          <input type="number" class="input-field" id="final-amount">
+        </div>
+        <div class='single'>
+          <div class='div-label-time'>Time</div>
+          <input type="number" class="input-field" id="time">
+        </div>
+        <div class='calc-div'>
+          <button class="btn btn-primary" type="submit">Рассчитать</button>
+        </div>
       </div>
     </header>
     <div class="main-container">
