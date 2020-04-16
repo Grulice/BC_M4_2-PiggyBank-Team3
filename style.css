@@ -12,12 +12,18 @@ body {
     width: 100vw;
     background-color: blueviolet;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .logo {
     width: 90px;
-    margin-right: 100px;
+    margin-left: 105px;
+}
+
+.sections-block {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
 }
 
 .sections-of-header {
@@ -25,7 +31,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10%;
+    width: 33%;
 }
 
 .sections-of-header:hover {
@@ -39,11 +45,13 @@ body {
     flex-wrap: wrap;
     margin: 0 auto;
     min-height: 300px;
-
+    flex-direction: row;
+    border: 1px solid blueviolet;
+    border-radius: 10px;
+    margin-top: 30px;
 }
 
 .plan {
-    /* display: none; */
     border-radius: 10px;
     margin: 10px;
     width: 30%;

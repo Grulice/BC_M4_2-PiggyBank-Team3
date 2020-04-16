@@ -7,22 +7,21 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
+  <script src="dynamic.js" defer></script>
   <title>Сайт Копилка</title>
 </head>
 
 <body>
   <header class="header-of-page">
     <img src="./images/PIGGY.jpg" class="logo" alt="piggy-logo">
-    <div class="sections-of-header">My plans</div>
-    <div class="sections-of-header">About us</div>
-    <div class="sections-of-header">Contacts</div>
+    <div class="sections-block">
+      <div class="sections-of-header">My plans</div>
+      <div class="sections-of-header">About us</div>
+      <div class="sections-of-header">Contacts</div>
+    </div>
   </header>
   <main class='plan-container'>
-      <div class="plan">
-        <div class="edit mini-button" id="edit"></div>
-        <div class="delete mini-button" id="delete"></div>
-      </div>
-    <div class="pop-up">
+    <div class="pop-up hidden">
       <label for="item-name">Item</label>
       <input type="text" class="input-field" id="item-name">
       <label for="deposit">Deposit</label>
@@ -32,10 +31,12 @@
       <label for="time">Time</label>
       <input type="number" class="input-field" id="time">
       <div class="edit mini-button" id="edit"></div>
-      <div class="delete mini-button" id="delete"></div>
+      <div class="delete mini-button" id="delete">X</div>
     </div>
   </main>
-  <button class="add-button" id="add"><p class="plus">+</p></button>
+  <button class="add-button" id="add">
+    <p class="plus">+</p>
+  </button>
   <hr class="seperator">
   <!-- Footer -->
   <footer class="page-footer font-small mdb-color lighten-3 pt-4">
