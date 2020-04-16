@@ -32,24 +32,36 @@ let calculate = (bankProducts, userInput) => {
   let result = [];
   for (let product of bankProducts) {
     let totalSum = userInput.initSum;
-    let monthes = 0;
+    // * (1 + product.income / 100 / 12);
+    let monthlyDeposit = getMonthlyDeposit(
+      userInput.initSum,
+      userInput.desiredSum,
+      userInput.term,
+      product.income / 100 / 12
+    );
+    let monthlyInfo = [];
+    // monthlyInfo.push({
+    //     startBalance: userInput.initSum,
+    //     endBalance: totalSum,
+    //     monthlyInterest: userInput.initSum * (product.income / 100 / 12)
+    // });
     for (let i = 0; i < userInput.term; i++) {
-      if (totalSum < userInput.desiredSum) {
-        totalSum *= 1 + product.income / 100 / 12;
-        monthes++;
-      } else break;
+      let currentMonth = {};
+      currentMonth.startBalance = totalSum;
+      currentMonth.monthlyInterest = totalSum * (product.income / 100 / 12);
+      totalSum = totalSum * (1 + product.income / 100 / 12) + monthlyDeposit;
+      currentMonth.endBalance = totalSum;
+      monthlyInfo.push(currentMonth);
     }
     let option = {
       deposit: product.deposit,
       income: product.income,
-      sum: totalSum,
+      sum: Math.ceil(totalSum),
       userTerm: userInput.term,
-      requiredMonthes: monthes,
+      minTerm: product.minTerm,
+      monthlyDeposit: monthlyDeposit,
+      monthlyInfo: monthlyInfo,
     };
-    if (totalSum < userInput.desiredSum) {
-      let additionalMonthlySaving = (userInput.desiredSum - totalSum) / 12;
-      option.addSaving = additionalMonthlySaving;
-    } else option.addSaving = 0;
     result.push(option);
   }
   return sortResults(result);
@@ -73,6 +85,10 @@ let sortResults = (result) => {
     );
     return superFinalResult;
   } else return finalResult;
+};
+
+let getMonthlyDeposit = (initial, target, t, perc) => {
+  return ((target - initial * (1 + perc) ** t) * perc) / ((1 + perc) ** t - 1);
 };
 
 module.exports = { getBestProduct };
