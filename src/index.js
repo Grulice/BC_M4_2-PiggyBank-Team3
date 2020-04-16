@@ -1,4 +1,8 @@
-let fetcher = require("./fetcher");
-let calculator = require("./calculator")
+const fetcher = require("./fetcher");
 
-calculate.getMonthlyDeposit();
+// FETCHER DEMO
+const goBtn = document.getElementById("goFetch");
+
+goBtn.addEventListener("click", () => {
+  fetcher.getDeposits().then((result) => console.log(result));
+});
