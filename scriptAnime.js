@@ -16,12 +16,21 @@ function animateCSS(element, animationName, callback) {
 let findOffer = document.querySelector('.calc-div button');
 let closePopUp = document.querySelector('.close span')
 
+const targetName = document.querySelector('#item-name').value;
+const needToReach = document.querySelector('#final-amount').value;
+const term = document.querySelector('#time').value;
+const startAmount = document.querySelector('#deposit').value;
+
 findOffer.addEventListener('click', findOfferButtonHandler)
 closePopUp.addEventListener('click', closeWindow);
 
 function findOfferButtonHandler() {
     let pigWait = document.querySelector('.pig-wait');
     let offer  = document.querySelector('.offer');
+
+    if(startAmount.value < 0) {
+        animateCSS('#deposit', 'shake');
+    }
     pigWait.style.display = 'none';
     offer.style.display = 'flex';
 }
