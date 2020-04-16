@@ -1,0 +1,23 @@
+{
+  "name": "bc_m4_2-piggybank-team3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grulice/BC_M4_2-PiggyBank-Team3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grulice/BC_M4_2-PiggyBank-Team3/issues"
+  },
+  "homepage": "https://github.com/Grulice/BC_M4_2-PiggyBank-Team3#readme",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
