@@ -2,9 +2,14 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .header-of-page {
     width: 100vw;
-    height: 10vh;
     background-color: blueviolet;
     display: flex;
     justify-content: space-around;
@@ -28,28 +33,17 @@
     cursor: pointer;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 60vh;
-    margin-bottom: 50px;
-}
-
-.main-div {
-    width: 72%;
-    min-height: 340px;
-    border: 1px solid blueviolet;
-    margin-top: 50px;
-    border-radius: 10px;
-    padding: 15px;
+.plan-container {
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    margin: 0 auto;
+    min-height: 300px;
+
 }
 
 .plan {
+    /* display: none; */
     border-radius: 10px;
     margin: 10px;
     width: 30%;
@@ -98,6 +92,7 @@ main {
     display: flex;
     flex-direction: column;
     min-width: 500px;
+    z-index: 999;
 }
 
 .input-field {
@@ -105,16 +100,19 @@ main {
 }
 
 .add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 100px;
+    top: 120px;
+
     border: 1px solid blueviolet;
     border-radius: 50%;
     width: 100px;
     height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     background: blueviolet;
-    margin-bottom: 50px;
-    margin-left: 80%;
 }
 
 .plus {
