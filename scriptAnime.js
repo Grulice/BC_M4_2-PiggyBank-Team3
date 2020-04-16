@@ -8,6 +8,7 @@ let offer = document.querySelector(".offer");
 let findOffer = document.querySelector(".calc-div button");
 let closePopUp = document.querySelector(".close span");
 
+
 findOffer.addEventListener("click", findOfferButtonHandler);
 closePopUp.addEventListener("click", closeWindow);
 
@@ -43,3 +44,4 @@ function closeWindow() {
   pigWait.style.display = "block";
   offer.style.display = "none";
 }
+
