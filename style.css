@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+.header-of-page {
+    width: 100vw;
+    height: 10vh;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    width: 90px;
+    margin-right: 100px;
+}
+
+.sections-of-header {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+}
+
+.sections-of-header:hover {
+    background-color: violet;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 60vh;
+    margin-bottom: 50px;
+}
+
+.main-div {
+    width: 72%;
+    min-height: 340px;
+    border: 1px solid blueviolet;
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+.plan {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    width: 30%;
+    min-width: 300px;
+    min-height: 280px;
+    height: 95%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.mini-button {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: blueviolet;
+}
+
+.edit {
+    position: absolute;
+    top: 5px;
+    right: 45px;
+}
+
+.delete {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.pop-up {
+    position: absolute;
+    top: 100px;
+    background: cadetblue;
+    width: 50%;
+    height: 60%;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+}
+
+.input-field {
+    width: 50%;
+}
+
+.add-button {
+    border: 1px solid blueviolet;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: blueviolet;
+    margin-bottom: 50px;
+}
+
+.plus {
+    font-size: 55px;
+    color: white
+}
+
+hr {
+    background: blueviolet;
+}
+
+.seperator {
+    width: 72%;
+}
+
+.hidden {
+    display: none;
+}

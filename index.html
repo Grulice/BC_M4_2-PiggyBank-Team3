@@ -1,46 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>Сайт Копилка</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Сайт Копилка</title>
 </head>
+
 <body>
-    <header></header>
-    <main>
-    </main>
-    <!-- Footer -->
-<footer class="page-footer font-small mdb-color lighten-3 pt-4">
+  <header class="header-of-page">
+    <img src="./images/PIGGY.jpg" class="logo" alt="piggy-logo">
+    <div class="sections-of-header">My plans</div>
+    <div class="sections-of-header">About us</div>
+    <div class="sections-of-header">Contacts</div>
+  </header>
+  <main>
+    <div class="main-div">
+      <div class="plan">
+        <label for="item-name">Item</label>
+        <input type="text" class="input-field" id="item-name">
+        <label for="deposit">Deposit</label>
+        <input type="number" class="input-field" id="deposit">
+        <label for="final-amount">FV</label>
+        <input type="number" class="input-field" id="final-amount">
+        <label for="time">Time</label>
+        <input type="number" class="input-field" id="time">
+        <div class="edit mini-button"></div>
+        <div class="delete mini-button"></div>
+      </div>
+      <div class="plan"></div>
+      <div class="plan"></div>
+      <div class="plan"></div>
+      <div class="plan"></div>
+      <div class="plan"></div>
+      <div class="plan"></div>
+      <div class="plan"></div>
+      <div class="plan"></div>
+      <div class="plan"></div>
+    </div>
+    <div class="pop-up hidden">
+      <label for="item-name">Item</label>
+      <input type="text" class="input-field" id="item-name">
+      <label for="deposit">Deposit</label>
+      <input type="number" class="input-field" id="deposit">
+      <label for="final-amount">FV</label>
+      <input type="number" class="input-field" id="final-amount">
+      <label for="time">Time</label>
+      <input type="number" class="input-field" id="time">
+      <div class="edit mini-button"></div>
+      <div class="delete mini-button"></div>
+    </div>
+  </main>
+  <div class="add-button"><p class="plus">+</p></div>
+  <hr class="seperator">
+  <!-- Footer -->
+  <footer class="page-footer font-small mdb-color lighten-3 pt-4">
 
     <!-- Footer Links -->
     <div class="container text-center text-md-left">
-  
+
       <!-- Grid row -->
       <div class="row">
-  
+
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
-  
+
           <!-- Content -->
           <h5 class="font-weight-bold text-uppercase mb-4">Footer Content</h5>
           <p>Here you can use rows and columns to organize your footer content.</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit amet numquam iure provident voluptate
             esse
             quasi, veritatis totam voluptas nostrum.</p>
-  
+
         </div>
         <!-- Grid column -->
-  
+
         <hr class="clearfix w-100 d-md-none">
-  
+
         <!-- Grid column -->
         <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
-  
+
           <!-- Links -->
           <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
-  
+
           <ul class="list-unstyled">
             <li>
               <p>
@@ -63,18 +108,18 @@
               </p>
             </li>
           </ul>
-  
+
         </div>
         <!-- Grid column -->
-  
+
         <hr class="clearfix w-100 d-md-none">
-  
+
         <!-- Grid column -->
         <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
-  
+
           <!-- Contact details -->
           <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
-  
+
           <ul class="list-unstyled">
             <li>
               <p>
@@ -93,18 +138,18 @@
                 <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
             </li>
           </ul>
-  
+
         </div>
         <!-- Grid column -->
-  
+
         <hr class="clearfix w-100 d-md-none">
-  
+
         <!-- Grid column -->
         <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
-  
+
           <!-- Social buttons -->
           <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
-  
+
           <!-- Facebook -->
           <a type="button" class="btn-floating btn-fb">
             <i class="fab fa-facebook-f"></i>
@@ -121,23 +166,24 @@
           <a type="button" class="btn-floating btn-dribbble">
             <i class="fab fa-dribbble"></i>
           </a>
-  
+
         </div>
         <!-- Grid column -->
-  
+
       </div>
       <!-- Grid row -->
-  
+
     </div>
     <!-- Footer Links -->
-  
+
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
       <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
     </div>
     <!-- Copyright -->
-  
+
   </footer>
   <!-- Footer -->
 </body>
+
 </html>
