@@ -21,11 +21,11 @@ body {
 }
 
 .sections-of-header {
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 10%;
+    color: white;
 }
 
 .sections-of-header:hover {
@@ -59,7 +59,7 @@ body {
     box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.41);
 }
 
-.mini-button {
+/* .mini-button {
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -79,25 +79,7 @@ body {
     position: absolute;
     top: 5px;
     right: 10px;
-}
-
-.pop-up {
-    position: absolute;
-    top: 100px;
-    background: cadetblue;
-    width: 50%;
-    height: 60%;
-    border-radius: 10px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    min-width: 500px;
-    z-index: 999;
-}
-
-.input-field {
-    width: 50%;
-}
+} */
 
 .add-button {
     display: flex;
@@ -130,4 +112,68 @@ hr {
 
 .hidden {
     display: none;
+}
+
+.pop-up {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    display: flex;
+    justify-content: space-between;
+    /* width: 800px; */
+    border-radius: 10px;
+    padding: 30px;
+    padding-top: 60px;
+    z-index: 999;
+    background-color: blanchedalmond;
+    border: 1px solid black;
+}
+
+.input-field {
+    width: 200px;
+}
+
+.input-form {
+    width: 400px;
+    height: 230px;
+}
+
+.single {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.offer {
+    display: flex;
+    display: none;
+    flex-direction: column;
+}
+
+.calc-div {
+    display: flex;
+    justify-content: center;
+}
+
+.list-group {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.submit-or-cancel {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.close {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    color: red;
+}
+
+.pig-wait {
+    /* display:none; */
+    width: 300px;
+    margin-top: -50px;
 }

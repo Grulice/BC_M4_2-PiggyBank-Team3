@@ -1,30 +1,7 @@
-let activateButton = document.querySelector('.activate');
-let child = document.querySelector('.child');
-let submitButton = document.querySelector('.submit');
-let input = document.querySelector('input');
-// let labelSum = document.querySelector('label');
-
-// activateButton.addEventListener('click', activate);
-submitButton.addEventListener('click', submitInfo)
-
-function submitInfo() {
-    if(isNaN(input.value)) {
-        console.log('here')
-        animateCSS('.labelSum', 'shake');
-    }
-}
-
-
-// function activate() {
-//     console.log(child.classList.contains('shake'));
-//     animateCSS('.child', 'shake');
-//     console.log(child.classList.contains('shake'));
-// }
 
 function animateCSS(element, animationName, callback) {
     const node = document.querySelector(element)
     node.classList.add('animated', animationName);
-    console.log(1010)
 
     function handleAnimationEnd() {
         node.classList.remove('animated', animationName)
@@ -34,4 +11,24 @@ function animateCSS(element, animationName, callback) {
     }
 
     node.addEventListener('animationend', handleAnimationEnd)
+}
+
+let findOffer = document.querySelector('.calc-div button');
+let closePopUp = document.querySelector('.close span')
+
+findOffer.addEventListener('click', findOfferButtonHandler)
+closePopUp.addEventListener('click', closeWindow);
+
+function findOfferButtonHandler() {
+    let pigWait = document.querySelector('.pig-wait');
+    let offer  = document.querySelector('.offer');
+    pigWait.style.display = 'none';
+    offer.style.display = 'flex';
+}
+
+function closeWindow() {
+    document.querySelector('.pop-up').style.display = 'none';
+    pigWait.style.display = 'block';
+    offer.style.display = 'none';
+
 }
