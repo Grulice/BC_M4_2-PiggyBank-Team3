@@ -11,6 +11,7 @@ addBtn.addEventListener("click", showPopUp);
 
 function showPopUp() {
   // showing popup
+  animateCSS('.pop-up', 'bounceInDown');
   popUp.classList.remove("hidden");
 }
 
