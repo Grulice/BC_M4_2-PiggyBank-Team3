@@ -128,7 +128,7 @@ closePopUpBtn.addEventListener("click", closeWindow);
 const confirmBtn = document.getElementById("button-confirm");
 confirmBtn.addEventListener("click", handleConfirm);
 const cancelBtn = document.getElementById("button-cancel");
-cancelBtn.addEventListener('click', resetForm);
+cancelBtn.addEventListener("click", resetForm);
 
 const loadingIcon = document.getElementById("loading-icon");
 
@@ -173,7 +173,7 @@ function findOfferButtonHandler() {
     desiredSum: Number(targetSumInp.value),
   };
 
-  loadingIcon.classList.remove('hidden');
+  loadingIcon.classList.remove("hidden");
   fetcher
     .getDeposits()
     .then((result) => {
@@ -192,6 +192,8 @@ function findOfferButtonHandler() {
       captions.monthlyDeposit.innerText =
         "Ежемесячное пополнение: " + bestOption.monthlyDeposit.toFixed(2);
 
+        //draw the table
+        // drawTable("main-table", bestOption);
       curOption = bestOption;
 
       // deposit, finalAmount, time, bankName, productName, interestRate
@@ -203,8 +205,8 @@ function findOfferButtonHandler() {
       console.error("Failed to fetch data from API: " + error);
       alert("Произошла ошибка подключения к серверу");
     })
-    .finally(_ => {
-      loadingIcon.classList.add('hidden');
+    .finally((_) => {
+      loadingIcon.classList.add("hidden");
     });
 }
 
@@ -222,10 +224,46 @@ function resetForm() {
   offer.style.display = "none";
 }
 
-function checkInputs() {
-
-}
+function checkInputs() {}
 
 function isValid(checkedinput) {}
+
+function drawTable(tableId, optionObj) {
+  function clearTable(in_table) {
+    let rows = in_table.rows;
+    let i = rows.length;
+    while (--i) {
+      in_table.deleteRow(i);
+    }
+  }
+
+  const HTMLtable = document.getElementById(tableId);
+  const monthlyInfo = optionObj.monthlyInfo;
+  const monthlyDep = optionObj.monthlyDeposit;
+  const incPercent = optionObj.income;
+
+  clearTable(HTMLtable);
+  // Draw the table
+  for (let month = 0; month < monthlyInfo.length; month++) {
+    const curInfo = monthlyInfo[month];
+    let row = HTMLtable.insertRow(-1);
+
+    // Insert new cells (<td> elements)
+    let cell0 = row.insertCell(0);
+    let cell1 = row.insertCell(1);
+    let cell2 = row.insertCell(2);
+    let cell3 = row.insertCell(3);
+    let cell4 = row.insertCell(4);
+    let cell5 = row.insertCell(5);
+
+    // Add some text to the new cells:
+    cell0.innerHTML = month + 1;
+    cell1.innerHTML = curInfo.startBalance.toFixed(2);
+    cell2.innerHTML = monthlyDep.toFixed(2);
+    cell3.innerHTML = incPercent + "%";
+    cell4.innerHTML = curInfo.monthlyInterest.toFixed(2);
+    cell5.innerHTML = curInfo.endBalance.toFixed(2);
+  }
+}
 
 //#endregion
