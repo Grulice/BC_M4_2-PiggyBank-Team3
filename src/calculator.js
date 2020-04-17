@@ -2,13 +2,12 @@ let getBestProduct = (bankProducts, userInput) => {
   let bestProduct;
   let filteredProducts = filterProducts(bankProducts, userInput);
   let sortedFilteredProducts = sortFilteredProducts(filteredProducts)
-  if (sortedFilteredProducts.length > 0) {
+  if (typeof sortedFilteredProducts === "string") return "Sorry we can't find appropriate product";
+  else {
     bestProduct = calculate(sortedFilteredProducts[0], userInput);
     return bestProduct;
-  } else {
-    return "Sorry we can't find appropriate product";
   }
-};
+}
 
 let getAlternativeProduct = (bankProducts, userInput) => {
   let filteredBankProducts = alternativeProductsFilter(bankProducts, userInput);
@@ -24,7 +23,7 @@ let getAlternativeProduct = (bankProducts, userInput) => {
     let bestProduct = calculate(filteredBankProducts[0], userInput);
     alternativeOption.push(bestProduct);
     return alternativeOption;
-  } if (filteredBankProducts.length == undefined ||filteredBankProducts.length == 0 ) {
+  } if (filteredBankProducts.length == undefined || filteredBankProducts.length == 0) {
     return "Sorry we can't find appropriate product";
   }
 }
@@ -54,10 +53,13 @@ let sortFilteredProducts = (bankProducts) => {
     let sorted = bankProducts.sort((a, b) => {
       return b.income - a.income;
     });
-    finalProduct.push(sorted[0]);
-  } else finalProduct.push(bankProducts[0]);
-
-  return finalProduct;
+    finalProduct.push(sorted[0])
+    return finalProduct;;
+  } else if (bankProducts.length == 1) {
+    finalProduct.push(bankProducts[0]);
+    return finalProduct;
+  }
+  else return 'По вашим параметрам вкладов не найдено'
 };
 
 let calculate = (bankProduct, userInput) => {
@@ -98,8 +100,6 @@ let getMonthlyDeposit = (initial, target, t, perc) => {
     return 0;
   } else return monthlyDeposit;
 };
-
-
 
 let alternativeProductsFilter = (bankProducts, userInput) => {
   let highestIncomeBySum;
