@@ -171,7 +171,7 @@ hr {
 .pop-up {
   position: absolute;
   top: 20%;
-  left: 26%;
+  left: 20%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
