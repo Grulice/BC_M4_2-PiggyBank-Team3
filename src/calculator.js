@@ -95,3 +95,4 @@ let getMonthlyDeposit = (initial, target, t, perc) => {
 };
 
 module.exports = { getBestProduct };
+
