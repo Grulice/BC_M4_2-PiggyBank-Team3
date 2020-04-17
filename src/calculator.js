@@ -88,7 +88,10 @@ let sortResults = (result) => {
 };
 
 let getMonthlyDeposit = (initial, target, t, perc) => {
-  return ((target - initial * (1 + perc) ** t) * perc) / ((1 + perc) ** t - 1);
+  let monthlyDeposit = ((target - initial * (1 + perc) ** t) * perc) / ((1 + perc) ** t - 1);
+  if (monthlyDeposit<0){
+    return 0;
+  } else return monthlyDeposit;
 };
 
 module.exports = { getBestProduct };
