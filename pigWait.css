@@ -1,0 +1,78 @@
+#pig {
+    max-width: 900px;
+  }
+  
+  #ear_sm_1_, #ear_big_8_, #ear_sm, #piggy_body, #nose_shadow, #nose_top, #nostrel_1, #nostrel_2, #ear_big_2_, #ear_big_1_, #ear_big, #eyes_open, #eyes, #money_slot, #money_slot_1_ {
+      float: left;
+      -webkit-animation-name: Floatingx;
+      -webkit-animation-duration: 2.5s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-name: Floating;
+      -moz-animation-duration: 2.5s;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: ease-in;
+      margin-left: 30px;
+      margin-top: 5px;
+  }
+  
+  @-webkit-keyframes Floatingx{
+      from {-webkit-transform:translate(0, 0px);}
+      65% {-webkit-transform:translate(0, -10px);-webkit-transform:translate(-3px,-4px);}
+      to {-webkit-transform: translate(0, -0px);-webkit-transform:translate(0px,0px);}    
+  }
+  @-moz-keyframes Floating{
+      from {-moz-transform:translate(0, 0px);}
+      65% {-moz-transform:translate(0, 30px);}
+      to {-moz-transform: translate(0, -0px);}    
+  }
+  
+  #tail {
+      float: left;
+      -webkit-animation-name: Floatingx;
+      -webkit-animation-duration: .5s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: ease-in;
+      -moz-animation-name: Floating;
+      -moz-animation-duration: .5s;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: ease-in;
+      margin-left: 30px;
+      margin-top: 5px;
+  }
+  
+  @-webkit-keyframes Floatingx{
+      from {-webkit-transform:translate(0, 0px);}
+      65% {-webkit-transform:translate(0, -10px);-webkit-transform:translate(-3px,-4px);}
+      to {-webkit-transform: translate(0, -0px);-webkit-transform:translate(0px,0px);}    
+  }
+  @-moz-keyframes Floating{
+      from {-moz-transform:translate(0, 0px);}
+      65% {-moz-transform:translate(0, 30px);}
+      to {-moz-transform: translate(0, -0px);}    
+  }
+  
+  #eyes_open {
+      animation: blink 4s steps(10, start) infinite;
+      -webkit-animation: blink 4s steps(10, start) infinite;
+  }
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes Floatingx{
+      from {-webkit-transform:translate(0, 0px);}
+      65% {-webkit-transform:translate(0, -10px);-webkit-transform:translate(-3px,-4px);}
+      to {-webkit-transform: translate(0, -0px);-webkit-transform:translate(0px,0px);}    
+  }
+  @-moz-keyframes Floating{
+      from {-moz-transform:translate(0, 0px);}
+      65% {-moz-transform:translate(0, 30px);}
+      to {-moz-transform: translate(0, -0px);}    
+  }
