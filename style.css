@@ -63,8 +63,9 @@ body {
 }
 
 .plus {
-  font-size: 62px;
+  font-size: 50px;
   color: white;
+  padding: 10px;
 }
 
 .plan-container {
@@ -171,7 +172,7 @@ hr {
 
 .pop-up {
   position: absolute;
-  top: 28%;
+  top: 20%;
   left: 26%;
   display: flex;
   justify-content: space-between;
@@ -183,6 +184,12 @@ hr {
   z-index: 999;
   background-color: blanchedalmond;
   border: 1px solid black;
+}
+
+.piggy-boom {
+  width:100%;
+  position: relative;
+  margin: 0 auto;
 }
 
 .table tbody tr th {
