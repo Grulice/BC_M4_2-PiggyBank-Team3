@@ -104,10 +104,11 @@ function popItUp() {
 
 // Popup.js, PopUp window logic
 //#region
-const targetName = document.querySelector("#item-name");
-const needToReach = document.querySelector("#final-amount");
-const term = document.querySelector("#time");
-const startAmount = document.querySelector("#deposit");
+const targetNameInp = document.querySelector("#item-name");
+const targetSumInp = document.querySelector("#final-amount");
+const termInp = document.querySelector("#time");
+const startAmountInp = document.querySelector("#deposit");
+const errorCaption = document.querySelector("#error-caption");
 
 // get captions from DOM
 const captions = {
@@ -126,11 +127,15 @@ closePopUpBtn.addEventListener("click", closeWindow);
 
 const confirmBtn = document.getElementById("button-confirm");
 confirmBtn.addEventListener("click", handleConfirm);
+const cancelBtn = document.getElementById("button-cancel");
+cancelBtn.addEventListener('click', resetForm);
+
+const loadingIcon = document.getElementById("loading-icon");
 
 function handleConfirm() {
   addNewPlan(
-    targetName.value,
-    Number(startAmount.value),
+    targetNameInp.value,
+    Number(startAmountInp.value),
     curOption.sum,
     curOption.userTerm,
     curOption.deposit,
@@ -162,20 +167,26 @@ function findOfferButtonHandler() {
   checkInputs();
 
   let userInput = {
-    description: targetName.value,
-    initSum: Number(startAmount.value),
-    term: Number(term.value),
-    desiredSum: Number(needToReach.value),
+    description: targetNameInp.value,
+    initSum: Number(startAmountInp.value),
+    term: Number(termInp.value),
+    desiredSum: Number(targetSumInp.value),
   };
 
+  loadingIcon.classList.remove('hidden');
   fetcher
     .getDeposits()
     .then((result) => {
       return calculator.getBestProduct(result, userInput);
     })
     .then((bestOption) => {
+      if (typeof bestOption === "string") {
+        errorCaption.innerText =
+          "Не найдено ни одного варианта по данным параметрам";
+        return;
+      }
       console.log(bestOption);
-
+      errorCaption.innerText = "";
       captions.depositName.innerText = "Вклад: " + bestOption.deposit;
       captions.percent.innerText = "Годовая ставка: " + bestOption.income + "%";
       captions.monthlyDeposit.innerText =
@@ -191,30 +202,30 @@ function findOfferButtonHandler() {
     .catch((error) => {
       console.error("Failed to fetch data from API: " + error);
       alert("Произошла ошибка подключения к серверу");
+    })
+    .finally(_ => {
+      loadingIcon.classList.add('hidden');
     });
 }
 
 function closeWindow() {
   document.querySelector(".pop-up").classList.add("hidden");
+  resetForm();
+}
+
+function resetForm() {
+  targetNameInp.value = "";
+  targetSumInp.value = "";
+  termInp.value = "";
+  startAmountInp.value = "";
   pigWait.style.display = "block";
   offer.style.display = "none";
 }
 
-function checkInputs() {}
+function checkInputs() {
+
+}
 
 function isValid(checkedinput) {}
 
 //#endregion
-
-// // Calculator DEMO
-// fetcher.getDeposits().then((result) => {
-//   let myUserInput = {
-//     initSum: 100000,
-//     term: 12,
-//     desiredSum: 1000200,
-//   };
-
-//   let finalOption = calculator.getBestProduct(result, myUserInput);
-
-//   console.log(finalOption);
-// });

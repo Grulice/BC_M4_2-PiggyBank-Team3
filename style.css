@@ -181,9 +181,6 @@ hr {
   border: 1px solid black;
 }
 
-.hidden {
-    display: none;
-  }
 
 .input-field {
   width: 200px;
@@ -206,9 +203,18 @@ hr {
   flex-direction: column;
 }
 
+#error-caption {
+  color: red;
+}
+
 .calc-div {
   display: flex;
   justify-content: center;
+}
+
+#loading-icon {
+  margin-left: 5px;
+  height: 2em;
 }
 
 .list-group {
@@ -236,3 +242,8 @@ hr {
 .error {
   color: red;
 }
+
+.hidden {
+  display: none;
+}
+
