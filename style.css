@@ -9,7 +9,7 @@ body {
 }
 
 .header-of-page {
-    width: 100vw;
+    width: 100%;
     background-color: #017D7C;
     display: flex;
     justify-content: space-between;
