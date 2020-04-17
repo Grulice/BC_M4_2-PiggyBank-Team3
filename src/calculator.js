@@ -1,13 +1,33 @@
 let getBestProduct = (bankProducts, userInput) => {
   let bestProduct;
   let filteredProducts = filterProducts(bankProducts, userInput);
-  if (filteredProducts.length > 0) {
-    bestProduct = calculate(filteredProducts, userInput);
-    return bestProduct[0];
+  let sortedFilteredProducts = sortFilteredProducts(filteredProducts)
+  if (sortedFilteredProducts.length > 0) {
+    bestProduct = calculate(sortedFilteredProducts[0], userInput);
+    return bestProduct;
   } else {
     return "Sorry we can't find appropriate product";
   }
 };
+
+let getAlternativeProduct = (bankProducts, userInput) => {
+  let filteredBankProducts = alternativeProductsFilter(bankProducts, userInput);
+  let alternativeOption = [];
+
+  if (filteredBankProducts.length > 1 && filteredBankProducts.length != undefined) {
+    let bestProductBySum = calculate(filteredBankProducts[0], userInput);
+    alternativeOption.push(bestProductBySum);
+    let bestProductByTerm = calculate(filteredBankProducts[1], userInput);
+    alternativeOption.push(bestProductByTerm);
+    return alternativeOption;
+  } if (filteredBankProducts.length == 1 && filteredBankProducts.length != undefined) {
+    let bestProduct = calculate(filteredBankProducts[0], userInput);
+    alternativeOption.push(bestProduct);
+    return alternativeOption;
+  } if (filteredBankProducts.length == undefined ||filteredBankProducts.length == 0 ) {
+    return "Sorry we can't find appropriate product";
+  }
+}
 
 let filterProducts = (bankProducts, userInput) => {
   let filteredProducts = bankProducts
@@ -28,71 +48,92 @@ let filterProducts = (bankProducts, userInput) => {
   // })
 };
 
-let calculate = (bankProducts, userInput) => {
-  let result = [];
-  for (let product of bankProducts) {
-    let totalSum = userInput.initSum;
-    // * (1 + product.income / 100 / 12);
-    let monthlyDeposit = getMonthlyDeposit(
-      userInput.initSum,
-      userInput.desiredSum,
-      userInput.term,
-      product.income / 100 / 12
-    );
-    let monthlyInfo = [];
-    // monthlyInfo.push({
-    //     startBalance: userInput.initSum,
-    //     endBalance: totalSum,
-    //     monthlyInterest: userInput.initSum * (product.income / 100 / 12)
-    // });
-    for (let i = 0; i < userInput.term; i++) {
-      let currentMonth = {};
-      currentMonth.startBalance = totalSum;
-      currentMonth.monthlyInterest = totalSum * (product.income / 100 / 12);
-      totalSum = totalSum * (1 + product.income / 100 / 12) + monthlyDeposit;
-      currentMonth.endBalance = totalSum;
-      monthlyInfo.push(currentMonth);
-    }
-    let option = {
-      deposit: product.deposit,
-      income: product.income,
-      sum: Math.ceil(totalSum),
-      userTerm: userInput.term,
-      minTerm: product.minTerm,
-      monthlyDeposit: monthlyDeposit,
-      monthlyInfo: monthlyInfo,
-    };
-    result.push(option);
-  }
-  return sortResults(result);
+let sortFilteredProducts = (bankProducts) => {
+  let finalProduct = [];
+  if (bankProducts.length > 1) {
+    let sorted = bankProducts.sort((a, b) => {
+      return b.income - a.income;
+    });
+    finalProduct.push(sorted[0]);
+  } else finalProduct.push(bankProducts[0]);
+
+  return finalProduct;
 };
 
-let sortResults = (result) => {
-  let sortedResult = result.sort((a, b) => {
-    return b.totalSum - a.totalSum;
-  });
-  let highestSum = sortedResult[0].totalSum;
-  let finalResult = sortedResult.filter(
-    (option) => option.totalSum == highestSum
+let calculate = (bankProduct, userInput) => {
+  let totalSum = userInput.initSum;
+  let monthlyDeposit = getMonthlyDeposit(
+    userInput.initSum,
+    userInput.desiredSum,
+    userInput.term,
+    bankProduct.income / 100 / 12
   );
-  if (finalResult.length > 1) {
-    let sortedFinalResult = finalResult.sort((a, b) => {
-      return b.requiredMonthes - a.requiredMonthes;
-    });
-    let shortestTerm = sortedFinalResult[0].requiredMonthes;
-    let superFinalResult = sortedFinalResult.filter(
-      (option) => option.requiredMonthes == shortestTerm
-    );
-    return superFinalResult;
-  } else return finalResult;
+  let monthlyInfo = [];
+
+  for (let i = 0; i < userInput.term; i++) {
+    let currentMonth = {};
+    currentMonth.startBalance = totalSum;
+    currentMonth.monthlyInterest = totalSum * (bankProduct.income / 100 / 12);
+    totalSum = totalSum * (1 + bankProduct.income / 100 / 12) + monthlyDeposit;
+    currentMonth.endBalance = totalSum;
+    monthlyInfo.push(currentMonth);
+  }
+  let option = {
+    deposit: bankProduct.deposit,
+    income: bankProduct.income,
+    sum: Math.ceil(totalSum),
+    userTerm: userInput.term,
+    minTerm: bankProduct.minTerm,
+    monthlyDeposit: monthlyDeposit,
+    monthlyInfo: monthlyInfo,
+  };
+  ;
+
+  return option;
 };
 
 let getMonthlyDeposit = (initial, target, t, perc) => {
   let monthlyDeposit = ((target - initial * (1 + perc) ** t) * perc) / ((1 + perc) ** t - 1);
-  if (monthlyDeposit<0){
+  if (monthlyDeposit < 0) {
     return 0;
   } else return monthlyDeposit;
 };
 
-module.exports = { getBestProduct };
+
+
+let alternativeProductsFilter = (bankProducts, userInput) => {
+  let highestIncomeBySum;
+  let highestIncomeByTerm;
+  let filteredBySum = bankProducts
+    .filter((product) => {
+      return (
+        product.minSumm <= userInput.initSum + 50000 &&
+        (product.maxSumm >= userInput.initSum + 50000 || product.maxSumm === "")
+      );
+    })
+  if (filteredBySum.length > 1) {
+    highestIncomeBySum = filteredBySum.sort((a, b) => {
+      return b.income - a.income;
+    });
+  }
+
+  let filteredByTerm = bankProducts.filter((product) => {
+    return (
+      product.minTerm <= userInput.term + 3 && product.maxTerm >= userInput.term + 3
+    );
+  });
+  if (filteredByTerm.length > 1) {
+    highestIncomeByTerm = filteredByTerm.sort((a, b) => {
+      return b.income - a.income;
+    });
+  }
+  return [highestIncomeBySum[0], highestIncomeByTerm[0]];
+  // .filter( (bankProduct) =>{
+  //     return bankProduct.currency == userInput.currency;
+  // })
+};
+
+
+module.exports = { getBestProduct, getAlternativeProduct };
+
 
