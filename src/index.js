@@ -48,11 +48,11 @@ function addNewPlan(
   let leftDescription = document.createElement("div");
   leftDescription.classList.add("content-left-description");
   let depositDescription = document.createElement("p");
-  depositDescription.innerText = `DEPOSIT: ${deposit} AZN`;
+  depositDescription.innerText = `Начальный вклад: ${deposit} RUB`;
   let finalAmountDescription = document.createElement("p");
-  finalAmountDescription.innerText = `FINAL AMOUNT: ${finalAmount} AZN`;
+  finalAmountDescription.innerText = `Целевая сумма: ${finalAmount} RUB`;
   let timeDecription = document.createElement("p");
-  timeDecription.innerText = `TIME: ${time} months`;
+  timeDecription.innerText = `Срок вклада: ${time} месяцев`;
 
   // Creation of righ content description:
 
@@ -64,9 +64,9 @@ function addNewPlan(
   rightDescription.classList.add("content-right-description");
 
   let productNameDescription = document.createElement("p");
-  productNameDescription.innerText = `PRODUCT NAME: ${productName}`;
+  productNameDescription.innerText = `Описание: ${productName}`;
   let interestRateDecription = document.createElement("p");
-  interestRateDecription.innerText = `INTEREST RATE: ${interestRate}%`;
+  interestRateDecription.innerText = `Процентная ставка: ${interestRate}%`;
   let monthlyTopupSum = document.createElement("p");
   monthlyTopupSum.innerText = `Ежемесячное пополнение: ${monthlyDepSum}`;
 
