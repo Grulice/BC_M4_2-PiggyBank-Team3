@@ -255,7 +255,7 @@ function findOfferButtonHandler() {
   fetcher
     .getDeposits()
     .then((result) => {
-      // console.log(calculator.getAlternativeProduct(result, userInput));
+      console.log(calculator.getAlternativeProduct(result, userInput));
       
       return calculator.getBestProduct(result, userInput);
     })

@@ -307,3 +307,8 @@ hr {
   background-color: #017d7c;
   border-color: #017d7c;
 }
+
+.list-group-item.active {
+  background-color: #017d7c;
+  border-color: #017d7c;
+}
