@@ -11,6 +11,8 @@ addBtn.addEventListener("click", showPopUp);
 
 function showPopUp() {
   // showing popup
+  let blur = document.querySelector('.blur');
+  blur.classList.remove('hidden');
   animateCSS('.pop-up', 'bounceInDown');
   popUp.classList.remove("hidden");
 }
@@ -255,7 +257,7 @@ function findOfferButtonHandler() {
   fetcher
     .getDeposits()
     .then((result) => {
-      console.log(calculator.getAlternativeProduct(result, userInput));
+      // console.log(calculator.getAlternativeProduct(result, userInput));
       
       return calculator.getBestProduct(result, userInput);
     })
@@ -291,6 +293,8 @@ function findOfferButtonHandler() {
 
 function closeWindow() {
   document.querySelector(".pop-up").classList.add("hidden");
+  let blur = document.querySelector('.blur');
+  blur.classList.add('hidden');
   resetForm();
 }
 
