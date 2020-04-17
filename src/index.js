@@ -42,10 +42,6 @@ function addNewPlan(
 
   // Creation of left content description:
 
-  // let deposit = 1000;
-  // let finalAmount = 5000;
-  // let time = 12;
-
   let leftDescription = document.createElement("div");
   leftDescription.classList.add("content-left-description");
   let depositDescription = document.createElement("p");
@@ -56,10 +52,6 @@ function addNewPlan(
   timeDecription.innerText = `Срок вклада: ${time} месяцев`;
 
   // Creation of righ content description:
-
-  // let bankName = "PASHA BANK";
-  // let productName = "POPOLNENIYA";
-  // let interestRate = 3.5;
 
   let rightDescription = document.createElement("div");
   rightDescription.classList.add("content-right-description");

@@ -60,11 +60,10 @@ body {
   height: 100px;
   float: left;
   background: #fabf01;
-}
-
-.plus {
-  font-size: 62px;
-  color: white;
+  background-image: url(./images/plus.png);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .plan-container {
