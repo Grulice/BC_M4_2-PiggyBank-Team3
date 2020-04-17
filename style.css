@@ -224,6 +224,7 @@ hr {
 }
 
 #error-caption {
+  margin: 10px 0;
   color: red;
 }
 
@@ -300,4 +301,9 @@ hr {
   -ms-animation: rotating 10s linear infinite;
   -o-animation: rotating 10s linear infinite;
   animation: rotating 10s linear infinite;
+}
+
+.btn {
+  background-color: #017d7c;
+  border-color: #017d7c;
 }

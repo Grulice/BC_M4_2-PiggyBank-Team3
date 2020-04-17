@@ -301,6 +301,7 @@ function resetForm() {
   startAmountInp.value = "";
   pigWait.style.display = "block";
   offer.style.display = "none";
+  errorCaption.innerText = "";
   clearTable("info-table");
 }
 
