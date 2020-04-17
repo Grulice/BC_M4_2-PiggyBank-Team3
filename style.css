@@ -173,6 +173,7 @@ hr {
   left: 26%;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   /* width: 800px; */
   border-radius: 10px;
   padding: 30px;
@@ -182,6 +183,17 @@ hr {
   border: 1px solid black;
 }
 
+.table tbody tr th {
+  text-align: center;
+}
+.table tbody tr td {
+  text-align: center;
+}
+
+.info-block {
+  display: flex;
+  justify-content: center;
+}
 
 .input-field {
   width: 200px;
