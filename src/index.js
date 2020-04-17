@@ -308,6 +308,7 @@ function checkInputs() {}
 
 function isValid(checkedinput) {}
 
+
 function clearTable(tableId) {
   const HTMLtable = document.getElementById(tableId);
   let rows = HTMLtable.rows;
@@ -317,7 +318,6 @@ function clearTable(tableId) {
   }
 }
 function drawTable(tableId, optionObj) {
-
 
   const HTMLtable = document.getElementById(tableId);
   const monthlyInfo = optionObj.monthlyInfo;
