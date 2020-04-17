@@ -35,7 +35,7 @@ function addNewPlan(
   // Creation of content div:
   let itemName = document.createElement("div");
   itemName.classList.add("content-main-focus");
-  itemName.innerText = itemDescription;
+  itemName.innerHTML = `<span class="info-description">${itemDescription}</span>`;
   let description = document.createElement("div");
   description.classList.add("content-description");
 
@@ -48,11 +48,11 @@ function addNewPlan(
   let leftDescription = document.createElement("div");
   leftDescription.classList.add("content-left-description");
   let depositDescription = document.createElement("p");
-  depositDescription.innerText = `Начальный вклад: ${deposit} RUB`;
+  depositDescription.innerHTML = `Начальный вклад: <span class="info-initsum">${deposit}</span> RUB`;
   let finalAmountDescription = document.createElement("p");
-  finalAmountDescription.innerText = `Целевая сумма: ${finalAmount} RUB`;
+  finalAmountDescription.innerHTML = `Целевая сумма: <span class="info-finalsum">${finalAmount}</span> RUB`;
   let timeDecription = document.createElement("p");
-  timeDecription.innerText = `Срок вклада: ${time} месяцев`;
+  timeDecription.innerHTML = `Срок вклада: <span class="info-term">${time}</span> месяцев`;
 
   // Creation of righ content description:
 
@@ -64,17 +64,17 @@ function addNewPlan(
   rightDescription.classList.add("content-right-description");
 
   let productNameDescription = document.createElement("p");
-  productNameDescription.innerText = `Описание: ${productName}`;
+  productNameDescription.innerHTML = `Описание: <span class="info-prodname">${productName}</span>`;
   let interestRateDecription = document.createElement("p");
-  interestRateDecription.innerText = `Процентная ставка: ${interestRate}%`;
+  interestRateDecription.innerHTML = `Процентная ставка: <span class="info-interestrate">${interestRate}</span>%`;
   let monthlyTopupSum = document.createElement("p");
-  monthlyTopupSum.innerText = `Ежемесячное пополнение: ${monthlyDepSum}`;
+  monthlyTopupSum.innerHTML = `Ежемесячное пополнение: <span class="info-depsum">${monthlyDepSum}</span>`;
 
   // Appendings:
   plan.append(editBtn, deleteBtn); // buttons
   planContainer.append(plan);
 
-  editBtn.addEventListener("click", popItUp);
+  editBtn.addEventListener("click", handleTileEditBtn);
   deleteBtn.addEventListener("click", deleteItem);
 
   plan.append(itemName, description); // Main contents
@@ -95,8 +95,58 @@ function deleteItem(e) {
   e.target.parentElement.remove();
 }
 
-function popItUp() {
-  popUp.classList.remove("hidden");
+function handleTileEditBtn(e) {
+  let currentTile = e.target.closest(".plan");
+  prepareEditPopUp(currentTile);
+  console.log(currentTile);
+}
+
+function prepareEditPopUp(inTile) {
+  let userInput = {
+    description: targetNameInp,
+    initSum: startAmountInp,
+    term: termInp,
+    desiredSum: targetSumInp,
+  };
+
+  let tileinfo = {
+    description: inTile.querySelector(".info-description"),
+    initSum: inTile.querySelector(".info-initsum"),
+    finalSum: inTile.querySelector(".info-finalsum"),
+    term: inTile.querySelector(".info-term"),
+    prodname: inTile.querySelector(".info-prodname"),
+    interestRate: inTile.querySelector(".info-interestrate"),
+    depSum: inTile.querySelector(".info-depsum"),
+  };
+
+  userInput.description.value = tileinfo.description.innerText;
+  userInput.initSum.value = tileinfo.initSum.innerText;
+  userInput.term.value = tileinfo.term.innerText;
+  userInput.desiredSum.value = tileinfo.finalSum.innerText;
+
+  editMode = true;
+  currentlyEdited = inTile;
+  showPopUp();
+}
+
+function editTileUsingInfo(targetTile, inputInfo) {
+  let tileinfo = {
+    description: targetTile.querySelector(".info-description"),
+    initSum: targetTile.querySelector(".info-initsum"),
+    finalSum: targetTile.querySelector(".info-finalsum"),
+    term: targetTile.querySelector(".info-term"),
+    prodname: targetTile.querySelector(".info-prodname"),
+    interestRate: targetTile.querySelector(".info-interestrate"),
+    depSum: targetTile.querySelector(".info-depsum"),
+  };
+
+  tileinfo.description.innerText = inputInfo.description;
+  tileinfo.initSum.innerText = inputInfo.initSum;
+  tileinfo.finalSum.innerText = inputInfo.finalSum;
+  tileinfo.term.innerText = inputInfo.term;
+  tileinfo.prodname.innerText = inputInfo.prodname;
+  tileinfo.interestRate.innerText = inputInfo.interestRate;
+  tileinfo.depSum.innerText = inputInfo.depSum;
 }
 
 // DYNAMIC JS, Tile logic END ---------------------------------------------------
@@ -109,6 +159,10 @@ const targetSumInp = document.querySelector("#final-amount");
 const termInp = document.querySelector("#time");
 const startAmountInp = document.querySelector("#deposit");
 const errorCaption = document.querySelector("#error-caption");
+
+// some edit logic
+let editMode = false;
+let currentlyEdited;
 
 // get captions from DOM
 const captions = {
@@ -133,15 +187,38 @@ cancelBtn.addEventListener("click", resetForm);
 const loadingIcon = document.getElementById("loading-icon");
 
 function handleConfirm() {
-  addNewPlan(
-    targetNameInp.value,
-    Number(startAmountInp.value),
-    curOption.sum,
-    curOption.userTerm,
-    curOption.deposit,
-    curOption.income,
-    curOption.monthlyDeposit.toFixed(2)
-  );
+  if (editMode) {
+    let userInput = {
+      description: targetNameInp.value,
+      initSum: Number(startAmountInp.value),
+      term: Number(termInp.value),
+      desiredSum: Number(targetSumInp.value),
+    };
+
+    let inpInfo = {
+      description: userInput.description,
+      initSum: userInput.initSum,
+      finalSum: curOption.sum,
+      term: curOption.userTerm,
+      prodname: curOption.deposit,
+      interestRate: curOption.income,
+      depSum: curOption.monthlyDeposit.toFixed(2)
+    }
+
+    editTileUsingInfo(currentlyEdited, inpInfo);
+    editMode = false;
+  } else {
+    addNewPlan(
+      targetNameInp.value,
+      Number(startAmountInp.value),
+      curOption.sum,
+      curOption.userTerm,
+      curOption.deposit,
+      curOption.income,
+      curOption.monthlyDeposit.toFixed(2)
+    );
+  }
+
   closeWindow();
 }
 
@@ -173,6 +250,7 @@ function findOfferButtonHandler() {
     desiredSum: Number(targetSumInp.value),
   };
 
+  errorCaption.innerText = "";
   loadingIcon.classList.remove("hidden");
   fetcher
     .getDeposits()
@@ -186,14 +264,13 @@ function findOfferButtonHandler() {
         return;
       }
       console.log(bestOption);
-      errorCaption.innerText = "";
       captions.depositName.innerText = "Вклад: " + bestOption.deposit;
       captions.percent.innerText = "Годовая ставка: " + bestOption.income + "%";
       captions.monthlyDeposit.innerText =
         "Ежемесячное пополнение: " + bestOption.monthlyDeposit.toFixed(2);
 
-        //draw the table
-        // drawTable("main-table", bestOption);
+      //draw the table
+      // drawTable("main-table", bestOption);
       curOption = bestOption;
 
       // deposit, finalAmount, time, bankName, productName, interestRate
