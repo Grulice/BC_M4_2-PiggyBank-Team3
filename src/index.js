@@ -86,6 +86,10 @@ function addNewPlan(
 
 function deleteItem(e) {
   e.target.parentElement.remove();
+  if (planContainer.childElementCount === 2) {
+    let piggyBoom = document.querySelector(".piggy-boom");
+    piggyBoom.classList.remove("hidden");
+  }
 }
 
 function handleTileEditBtn(e) {
@@ -212,6 +216,8 @@ function handleConfirm() {
     );
   }
 
+  let piggyBoom = document.querySelector(".piggy-boom");
+  piggyBoom.classList.add("hidden");
   closeWindow();
 }
 
@@ -234,6 +240,7 @@ let curOption = {};
 
 function findOfferButtonHandler() {
   // здесь будут проверяться инпуты
+
   checkInputs();
 
   let userInput = {
@@ -265,7 +272,7 @@ function findOfferButtonHandler() {
         "Ежемесячное пополнение: " + bestOption.monthlyDeposit.toFixed(2);
 
       //draw the table
-      // drawTable("main-table", bestOption);
+      drawTable("info-table", bestOption);
       curOption = bestOption;
 
       // deposit, finalAmount, time, bankName, productName, interestRate
@@ -294,27 +301,30 @@ function resetForm() {
   startAmountInp.value = "";
   pigWait.style.display = "block";
   offer.style.display = "none";
+  clearTable("info-table");
 }
 
 function checkInputs() {}
 
 function isValid(checkedinput) {}
 
-function drawTable(tableId, optionObj) {
-  function clearTable(in_table) {
-    let rows = in_table.rows;
-    let i = rows.length;
-    while (--i) {
-      in_table.deleteRow(i);
-    }
+
+function clearTable(tableId) {
+  const HTMLtable = document.getElementById(tableId);
+  let rows = HTMLtable.rows;
+  let i = rows.length;
+  while (--i) {
+    HTMLtable.deleteRow(i);
   }
+}
+function drawTable(tableId, optionObj) {
 
   const HTMLtable = document.getElementById(tableId);
   const monthlyInfo = optionObj.monthlyInfo;
   const monthlyDep = optionObj.monthlyDeposit;
   const incPercent = optionObj.income;
 
-  clearTable(HTMLtable);
+  clearTable(tableId);
   // Draw the table
   for (let month = 0; month < monthlyInfo.length; month++) {
     const curInfo = monthlyInfo[month];

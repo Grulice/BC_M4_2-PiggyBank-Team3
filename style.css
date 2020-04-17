@@ -6,10 +6,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header-of-page {
-  width: 100vw;
+  width: 100%;
   background-color: #017d7c;
   display: flex;
   justify-content: space-between;
@@ -21,9 +22,10 @@ body {
 }
 
 .sections-block {
+  font-size: 25px;
   display: flex;
-  justify-content: space-around;
-  width: 30%;
+  justify-content: space-evenly;
+  width: 50%;
 }
 
 .sections-of-header {
@@ -31,7 +33,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33%;
+  text-align: center;
 }
 
 .sections-of-header:hover {
@@ -39,24 +41,46 @@ body {
   cursor: pointer;
 }
 
+.main-container {
+  width: 72%;
+  min-width: 500px;
+  margin: 0 auto;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 130px;
+  margin-right: 4%;
+  border: 1px solid #fabf01;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  float: left;
+  background: #fabf01;
+  background-image: url(./images/plus.png);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .plan-container {
-  width: 70%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  /* margin: 0 auto; */
   min-height: 302px;
   flex-direction: row;
-  border: 1px solid #fabf01;
   border-radius: 10px;
-  margin-top: 30px;
+  margin: 30px auto;
 }
 
 .plan {
   border-radius: 10px;
   margin: 10px;
-  width: 31.4%;
-  min-width: 300px;
+  width: 30%;
+  min-width: 292px;
   min-height: 280px;
   height: 95%;
   padding: 10px;
@@ -78,18 +102,22 @@ body {
   width: 100%;
   display: flex;
   margin-top: 10px;
+  font-size: 12px;
 }
 
 .content-left-description {
   width: 50%;
   line-height: 15px;
   margin-top: 10px;
+  margin-right: 5px;
+  border-right: 1px solid rgb(0, 0, 0, 0.3);
 }
 
 .content-right-description {
   width: 50%;
   line-height: 15px;
   margin-top: 10px;
+  margin-left: 5px;
 }
 
 .mini-button {
@@ -113,33 +141,14 @@ body {
   right: 45px;
   background-image: url(./images/edit.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-position: center;
+  background-size: 15px;
 }
 
 .delete {
   position: absolute;
   top: 5px;
   right: 10px;
-}
-
-.add-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* position: fixed; */
-  position: sticky;
-  /* left: -100px; */
-  top: 120px;
-  margin-left: 5%;
-  margin-right: 30px;
-
-  border: 1px solid #fabf01;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-
-  float: left;
-  background: #fabf01;
 }
 
 footer {
@@ -151,11 +160,6 @@ footer {
   outline: none;
 }
 
-.plus {
-  font-size: 55px;
-  color: white;
-}
-
 hr {
   background: #588da8;
 }
@@ -164,14 +168,13 @@ hr {
   width: 72%;
 }
 
-
-
 .pop-up {
   position: absolute;
   top: 20%;
   left: 20%;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   /* width: 800px; */
   border-radius: 10px;
   padding: 30px;
@@ -181,6 +184,23 @@ hr {
   border: 1px solid black;
 }
 
+.piggy-boom {
+  width:100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.table tbody tr th {
+  text-align: center;
+}
+.table tbody tr td {
+  text-align: center;
+}
+
+.info-block {
+  display: flex;
+  justify-content: center;
+}
 
 .input-field {
   width: 200px;
@@ -235,7 +255,6 @@ hr {
 }
 
 .pig-wait {
-  /* display:none; */
   width: 300px;
   margin-top: -50px;
 }
@@ -247,3 +266,38 @@ hr {
   display: none;
 }
 
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 10s linear infinite;
+  -moz-animation: rotating 10s linear infinite;
+  -ms-animation: rotating 10s linear infinite;
+  -o-animation: rotating 10s linear infinite;
+  animation: rotating 10s linear infinite;
+}
