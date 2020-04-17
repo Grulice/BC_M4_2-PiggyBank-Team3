@@ -45,3 +45,14 @@ function closeWindow() {
   offer.style.display = "none";
 }
 
+
+// animate errors
+
+let inputTime = document.querySelector('input');
+
+animateCSS('input', 'shake');
+
+
+
+
+
