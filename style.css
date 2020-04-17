@@ -5,7 +5,7 @@
 .blur {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 250%;
   background: rgba(0, 0, 0, 0.5);
 }
 
@@ -186,7 +186,7 @@ hr {
 
 .pop-up {
   position: absolute;
-  left: 14.2%;
+  left: 15%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -325,4 +325,12 @@ hr {
 .list-group-item.active {
   background-color: #017d7c;
   border-color: #017d7c;
+}
+
+.table-container {
+  width: 100%;
+}
+
+#xls-download-btn {
+  width: 100%;
 }

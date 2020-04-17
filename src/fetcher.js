@@ -1,5 +1,6 @@
 const INFO_EXPIRY_THRESHOLD_SECONDS = 60;
-const MOCKAPI_BASE_URL = "https://5e8e012722d8cd0016a79e5c.mockapi.io";
+const MOCKAPI_BASE_URL = "https://bolta.herokuapp.com";
+// const MOCKAPI_BASE_URL = "https://5e8e012722d8cd0016a79e5c.mockapi.io";
 let lastFetchTime = -1;
 let lastFetchResult = [];
 

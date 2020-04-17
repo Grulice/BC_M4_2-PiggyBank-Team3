@@ -5,15 +5,18 @@ const calculator = require("./calculator");
 //#region
 let planContainer = document.querySelector(".plan-container");
 let popUp = document.querySelector(".pop-up");
+let pigCoin = document.querySelector("#coin");
+
+pigCoin.addEventListener("click", (_) => setTimeout(showPopUp, 5000));
 
 let addBtn = document.getElementById("add");
 addBtn.addEventListener("click", showPopUp);
 
 function showPopUp() {
   // showing popup
-  let blur = document.querySelector('.blur');
-  blur.classList.remove('hidden');
-  animateCSS('.pop-up', 'bounceInDown');
+  let blur = document.querySelector(".blur");
+  blur.classList.remove("hidden");
+  animateCSS(".pop-up", "bounceInDown");
   popUp.classList.remove("hidden");
 }
 
@@ -201,8 +204,8 @@ function handleConfirm() {
       term: curOption.userTerm,
       prodname: curOption.deposit,
       interestRate: curOption.income,
-      depSum: curOption.monthlyDeposit.toFixed(2)
-    }
+      depSum: curOption.monthlyDeposit.toFixed(2),
+    };
 
     editTileUsingInfo(currentlyEdited, inpInfo);
     editMode = false;
@@ -239,6 +242,7 @@ function animateCSS(element, animationName, callback) {
 }
 
 let curOption = {};
+let mainTableContainer = document.querySelector(".table-container");
 
 function findOfferButtonHandler() {
   // здесь будут проверяться инпуты
@@ -257,8 +261,8 @@ function findOfferButtonHandler() {
   fetcher
     .getDeposits()
     .then((result) => {
-      // console.log(calculator.getAlternativeProduct(result, userInput));
-      
+      console.log(calculator.getAlternativeProduct(result, userInput));
+
       return calculator.getBestProduct(result, userInput);
     })
     .then((bestOption) => {
@@ -274,6 +278,7 @@ function findOfferButtonHandler() {
         "Ежемесячное пополнение: " + bestOption.monthlyDeposit.toFixed(2);
 
       //draw the table
+      mainTableContainer.classList.remove("hidden");
       drawTable("info-table", bestOption);
       curOption = bestOption;
 
@@ -293,8 +298,8 @@ function findOfferButtonHandler() {
 
 function closeWindow() {
   document.querySelector(".pop-up").classList.add("hidden");
-  let blur = document.querySelector('.blur');
-  blur.classList.add('hidden');
+  let blur = document.querySelector(".blur");
+  blur.classList.add("hidden");
   resetForm();
 }
 
@@ -306,13 +311,13 @@ function resetForm() {
   pigWait.style.display = "block";
   offer.style.display = "none";
   errorCaption.innerText = "";
+  mainTableContainer.classList.add("hidden");
   clearTable("info-table");
 }
 
 function checkInputs() {}
 
 function isValid(checkedinput) {}
-
 
 function clearTable(tableId) {
   const HTMLtable = document.getElementById(tableId);
@@ -323,7 +328,6 @@ function clearTable(tableId) {
   }
 }
 function drawTable(tableId, optionObj) {
-
   const HTMLtable = document.getElementById(tableId);
   const monthlyInfo = optionObj.monthlyInfo;
   const monthlyDep = optionObj.monthlyDeposit;
@@ -354,3 +358,42 @@ function drawTable(tableId, optionObj) {
 }
 
 //#endregion
+
+// xls download logic
+const downloadxlsBtn = document.querySelector("#xls-download-btn");
+downloadxlsBtn.addEventListener("click", handleExportTable);
+
+function handleExportTable() {
+  exportTableToExcel("info-table", "piggy_depositBreakDown");
+}
+
+function exportTableToExcel(tableID, filename = "") {
+  var downloadLink;
+  var dataType = "application/vnd.ms-excel";
+  var tableSelect = document.getElementById(tableID);
+  var tableHTML = tableSelect.outerHTML.replace(/ /g, "%20");
+
+  // Specify file name
+  filename = filename ? filename + ".xls" : "excel_data.xls";
+
+  // Create download link element
+  downloadLink = document.createElement("a");
+
+  document.body.appendChild(downloadLink);
+
+  if (navigator.msSaveOrOpenBlob) {
+    var blob = new Blob(["\ufeff", tableHTML], {
+      type: dataType,
+    });
+    navigator.msSaveOrOpenBlob(blob, filename);
+  } else {
+    // Create a link to the file
+    downloadLink.href = "data:" + dataType + ", " + tableHTML;
+
+    // Setting the file name
+    downloadLink.download = filename;
+
+    //triggering the function
+    downloadLink.click();
+  }
+}

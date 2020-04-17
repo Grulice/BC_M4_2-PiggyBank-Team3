@@ -15,7 +15,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="pigWait.css" />
-    <script src="dist/main.js" defer></script>
+    <script src="dist/main.minified.js" defer></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"
       defer
@@ -34,46 +34,44 @@
     <title>Сайт Копилка</title>
   </head>
 
+  <body>
+    <div class="blur hidden"></div>
+    <header class="header-of-page">
+      <img src="./images/pig.png" class="logo" alt="piggy-logo" />
+      <div class="sections-block">
+        <div class="sections-of-header">My plans</div>
+        <div class="sections-of-header">About us</div>
+        <div class="sections-of-header">Contacts</div>
+      </div>
+    </header>
+    <div class="main-container">
+      <button class="add-button" id="add"></button>
+      <main class="plan-container">
+        <div class="piggy-boom">
+          <div class="pig-anime">
+            <div id="coin"></div>
+            <h1>( ͡° ͜ʖ ͡°) ------></h1>
+            <div class="piggy">
+              <div class="insert"></div>
+              <div class="cover"></div>
+              <div class="coin-cover"></div>
+              <div class="left-ear">
+                <div class="outset"></div>
+                <div class="inset"></div>
+              </div>
+              <div class="right-ear">
+                <div class="outset"></div>
+                <div class="inset"></div>
+              </div>
+              <div class="eye1"></div>
+              <div class="eye2"></div>
+              <div class="nose">
+                <div class="nostril1"></div>
+                <div class="nostril2"></div>
+              </div>
+              <div class="mouth"></div>
 
-<body>
-  <div class="blur hidden"></div>
-  <header class="header-of-page">
-    <img src="./images/pig.png" class="logo" alt="piggy-logo" />
-    <div class="sections-block">
-      <div class="sections-of-header">My plans</div>
-      <div class="sections-of-header">About us</div>
-      <div class="sections-of-header">Contacts</div>
-    </div>
-  </header>
-  <div class="main-container">
-    <button class="add-button" id="add"></button>
-    <main class="plan-container">
-      <div class='piggy-boom'>
-        <div class='pig-anime'>
-          <div id="coin"></div>
-          <h1>Insert Coin</h1>
-          <div class="piggy">
-            <div class="insert"></div>
-            <div class="cover"></div>
-            <div class="coin-cover"></div>
-            <div class="left-ear">
-              <div class="outset"></div>
-              <div class="inset"></div>
-            </div>
-            <div class="right-ear">
-              <div class="outset"></div>
-              <div class="inset"></div>
-            </div>
-            <div class="eye1"></div>
-            <div class="eye2"></div>
-            <div class="nose">
-              <div class="nostril1"></div>
-              <div class="nostril2"></div>
-            </div>
-            <div class="mouth"></div>
-
-            <div id="blush"></div>
-
+              <div id="blush"></div>
 
               <div id="blush"></div>
 
@@ -391,21 +389,25 @@
               </div>
             </div>
           </div>
-          <table class="table" id="info-table">
-            <thead>
-              <tr>
-                <th scope="col">Месяц</th>
-                <th scope="col">Нач. сумма</th>
-                <th scope="col">Периодичное пополнение</th>
-                <th scope="col">Процентное пополнение</th>
-                <th scope="col">Процентное пополнение (валюта)</th>
-                <th scope="col">Конечная сумма</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+          <div class="table-container hidden">
+            <button id="xls-download-btn" class="btn btn-primary">
+              Download xls
+            </button>
+            <table class="table" id="info-table">
+              <thead>
+                <tr>
+                  <th scope="col">Month</th>
+                  <th scope="col">Initial deposit</th>
+                  <th scope="col">Recurring payment</th>
+                  <th scope="col">Interest rate</th>
+                  <th scope="col">Interest rate (amount)</th>
+                  <th scope="col">Final amount</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
         </div>
-
       </main>
     </div>
     <hr class="seperator" />
